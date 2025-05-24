@@ -16,7 +16,7 @@ if [[ $1 = "--nvidia" ]] || [[ $1 = "-n" ]]
                --mount source=ws_moveit,target=/ws_moveit \
                --net=host \
                --privileged \
-               --name cgyclonedds cgyclonedds-img
+               --name cg4yclonedds cg4yclonedds-img
 
 else
 
@@ -27,8 +27,8 @@ else
                 -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
                 -e XAUTHORITY \
                 -v /dev:/dev \
-                -v ./test3:/test3 \
+                -v ./ws_moveit:/ws_moveit \
                --net=host \
                --privileged \
-               --name cgyclonedds cgyclonedds-img
+               --name cg4yclonedds cg4yclonedds-img
 fi

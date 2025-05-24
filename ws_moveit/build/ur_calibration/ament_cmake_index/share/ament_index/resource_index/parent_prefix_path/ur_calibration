@@ -1,0 +1,1 @@
+/ws_moveit/install/ur_robot_driver:/ws_moveit/install/ur_controllers:/ws_moveit/install/ur_description:/ws_moveit/install/ur_dashboard_msgs:/opt/ros/humble
