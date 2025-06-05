@@ -33,7 +33,6 @@ turtlebot3_msgs
 
 turtlebot3
 
-(You can uncomment the slam_toolbox line in the script to clone it as well)
 
 ## Notes
 This setup is intended for simulation and SLAM testing in ROS 2 Humble.
