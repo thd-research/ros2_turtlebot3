@@ -1,0 +1,6 @@
+Invoking command in '/ws_slam/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/DynamixelSDK/ros/dynamixel_sdk -DCMAKE_INSTALL_PREFIX=/ws_slam/install/dynamixel_sdk
+Invoked command in '/ws_slam/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/DynamixelSDK/ros/dynamixel_sdk -DCMAKE_INSTALL_PREFIX=/ws_slam/install/dynamixel_sdk
+Invoking command in '/ws_slam/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/dynamixel_sdk -- -j12 -l12
+Invoked command in '/ws_slam/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/dynamixel_sdk -- -j12 -l12
+Invoking command in '/ws_slam/build/dynamixel_sdk': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/dynamixel_sdk
+Invoked command in '/ws_slam/build/dynamixel_sdk' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/dynamixel_sdk

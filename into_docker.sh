@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-sudo docker exec -ti cg4yclonedds bash
+sudo docker exec -ti slamn1 bash

@@ -126,57 +126,24 @@ RUN apt-get update && apt-get install -y ros-humble-ur-client-library \
                    ros-humble-joint-state-publisher-gui \
                    ros-humble-gazebo-ros2-control \
                    ros-humble-ament-clang-format \
+                   ros-humble-slam-toolbox \
+                   ros-humble-turtlebot3 \
+                   ros-humble-turtlebot3-simulations \
                    ros-humble-ament-clang-tidy
     
 # Initialize rosdep
 RUN rosdep init && rosdep update
 
-# Create workspace and download MoveIt 2 source code
-#RUN mkdir -p ~/ws_moveit/src
-#VOLUME ~/ws_moveit
-#
-#RUN cd ~/ws_moveit/src && \
-#    git clone -b humble https://github.com/moveit/moveit2_tutorials && \
-#    vcs import --recursive < moveit2_tutorials/moveit2_tutorials.repos 
-#
-## Install dependencies for workspace
-#RUN cd ~/ws_moveit &&  \
-#    sudo apt update && \
-#    rosdep install -r --from-paths . --ignore-src --rosdistro humble -y
-
-# Install packages for UR robots
-#RUN sudo apt update && \
-#    sudo apt install -y ros-humble-ur-client-library && \  
-#    sudo apt install -y ros-humble-ur 
-#    
-#RUN apt-get update && apt-get install -y \
-#    ros-humble-ur-bringup \
-#    ros-humble-ur-description \                     THIS MUST BE ELIMINATED 
-#    ros-humble-ur-controllers
-
-#RUN cd ~/ws_moveit/src && \
-#    git clone -b humble https://github.com/UniversalRobots/Universal_Robots_ROS2_Description.git
-#RUN cd ~/ws_moveit/src && \
-#    git clone -b humble https://github.com/UniversalRobots/Universal_Robots_ROS2_Gazebo_Simulation.git
-
-#RUN cd ~/ws_moveit/src && \
-#    git clone https://github.com/jannishaberhausen/robotiq_2f_gripper_ros2.git && \
-#    cd robotiq_2f_gripper_ros2 && \
-#    git submodule update --init --recursive
-#
-## Build the Colcon Workspace with proper sourcing
-#RUN /bin/bash -c "source /opt/ros/humble/setup.bash && \
-#    cd ~/ws_moveit && \
-#    colcon build --mixin release --executor sequential"
-
-# Source ROS 2 and Colcon Workspace on container start
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc 
- 
-#   echo "source ~/ws_moveit/install/setup.bash" >> ~/.bashrc
-# Clean up
-RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+RUN echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc
+RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
+RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
+RUN echo 'export TURTLEBOT3_MODEL=burger' >> ~/.bashrc
 
-#WORKDIR /ws_moveit
+ #
+#RUN apt-get clean && rm -rf /var/lib/apt/lists/*
+
+#WORKDIR /ws_slam
 
 # Entry point: Open a bash shell with sourced ROS environment
 #ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source ~/ws_moveit/install/setup.bash && exec bash"]
