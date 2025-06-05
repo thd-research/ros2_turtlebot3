@@ -3,9 +3,11 @@
 This repository contains Docker scripts to simplify the setup and execution of a SLAM development environment for TurtleBot3 using **ROS 2 Humble**.
 The goal is to create a learning environment for THD robotics team students to explore, practice, and understand SLAM concepts.
 
-##  Installation and Usage
+Installation and Usage
 
 These scripts automate Docker installation, image building, and container execution.
+
+
 
 ##: It is recommended to use the `-n` flag to enable Nvidia GPU support (if available).
 
@@ -32,6 +34,11 @@ DynamixelSDK
 turtlebot3_msgs
 
 turtlebot3
+
+after building and running the image, it is necessary to build the work space (ws_slam)
+comand:  colcon build
+and then source
+comand: source ws_salm/installation/setup.bash
 
 
 ## Notes
