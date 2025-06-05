@@ -1,6 +1,0 @@
-Invoking command in '/ws_slam/build/turtlebot3_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/turtlebot3_msgs -DCMAKE_INSTALL_PREFIX=/ws_slam/install/turtlebot3_msgs
-Invoked command in '/ws_slam/build/turtlebot3_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/turtlebot3_msgs -DCMAKE_INSTALL_PREFIX=/ws_slam/install/turtlebot3_msgs
-Invoking command in '/ws_slam/build/turtlebot3_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/turtlebot3_msgs -- -j12 -l12
-Invoked command in '/ws_slam/build/turtlebot3_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/turtlebot3_msgs -- -j12 -l12
-Invoking command in '/ws_slam/build/turtlebot3_msgs': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/turtlebot3_msgs
-Invoked command in '/ws_slam/build/turtlebot3_msgs' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/turtlebot3_msgs

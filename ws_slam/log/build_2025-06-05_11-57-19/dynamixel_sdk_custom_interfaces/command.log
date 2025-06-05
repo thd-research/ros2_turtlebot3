@@ -1,6 +1,0 @@
-Invoking command in '/ws_slam/build/dynamixel_sdk_custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/DynamixelSDK/ros/dynamixel_sdk_custom_interfaces -DCMAKE_INSTALL_PREFIX=/ws_slam/install/dynamixel_sdk_custom_interfaces
-Invoked command in '/ws_slam/build/dynamixel_sdk_custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /ws_slam/src/DynamixelSDK/ros/dynamixel_sdk_custom_interfaces -DCMAKE_INSTALL_PREFIX=/ws_slam/install/dynamixel_sdk_custom_interfaces
-Invoking command in '/ws_slam/build/dynamixel_sdk_custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/dynamixel_sdk_custom_interfaces -- -j12 -l12
-Invoked command in '/ws_slam/build/dynamixel_sdk_custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /ws_slam/build/dynamixel_sdk_custom_interfaces -- -j12 -l12
-Invoking command in '/ws_slam/build/dynamixel_sdk_custom_interfaces': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/dynamixel_sdk_custom_interfaces
-Invoked command in '/ws_slam/build/dynamixel_sdk_custom_interfaces' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /ws_slam/build/dynamixel_sdk_custom_interfaces

@@ -1,9 +1,0 @@
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/uninstall.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/turtlebot3_navigation2_uninstall.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/test.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/edit_cache.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/rebuild_cache.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/list_install_components.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/install.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/install/local.dir
-/ws_slam/build/turtlebot3_navigation2/CMakeFiles/install/strip.dir
