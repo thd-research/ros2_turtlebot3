@@ -38,7 +38,7 @@ turtlebot3
 after building and running the image, it is necessary to build the work space (ws_slam)
 comand:  colcon build
 and then source
-comand: source ws_salm/installation/setup.bash
+comand: source ws_slam/installation/setup.bash
 
 
 ## Notes
