@@ -92,53 +92,38 @@ RUN apt update && apt install -y \
 	  ros-humble-moveit \
 	  ros-humble-moveit-ros-control-interface
 
-# Install additional ROS 2 packages
-RUN apt-get install -y \
-    ros-humble-teleop-twist-joy \
-    ros-humble-teleop-twist-keyboard \
-    ros-humble-navigation2 \
-    ros-humble-gazebo-ros-pkgs \
-    ros-humble-eigen-stl-containers \
-    ros-humble-random-numbers \
-    ros-humble-moveit-common \
-    ros-humble-nav2-bringup
+# # Install additional ROS 2 packages
+# RUN apt-get install -y \
+#     ros-humble-teleop-twist-joy \
+#     ros-humble-teleop-twist-keyboard \
+#     ros-humble-navigation2 \
+#     ros-humble-gazebo-ros-pkgs \
+#     ros-humble-eigen-stl-containers \
+#     ros-humble-random-numbers \
+#     ros-humble-moveit-common \
+#     ros-humble-nav2-bringup
 
-RUN apt-get update && apt-get install -y ros-humble-ur-client-library \
-                   ros-humble-moveit-servo \
-                   ros-humble-warehouse-ros-sqlite \
-                   ros-humble-controller-manager \
-                   ros-humble-hardware-interface \
-                   ros-humble-ur-msgs \
-                   ros-humble-force-torque-sensor-broadcaster \
-                   ros-humble-joint-state-broadcaster \
-                   ros-humble-joint-state-publisher \
-                   ros-humble-joint-trajectory-controller \
-                   ros-humble-pose-broadcaster \
-                   ros-humble-position-controllers \
-                   ros-humble-ros2-controllers-test-nodes \
-                   socat \
-                   ros-humble-velocity-controllers \
-                   ros-humble-controller-interface \
-                   ros-humble-realtime-tools \
-                   ros-humble-hardware-interface-testing \
-                   ros-humble-ros2-control-test-assets \
-                   liburdfdom-tools \
-                   ros-humble-joint-state-publisher-gui \
-                   ros-humble-gazebo-ros2-control \
-                   ros-humble-ament-clang-format \
-                   ros-humble-slam-toolbox \
-                   ros-humble-turtlebot3 \
-                   ros-humble-turtlebot3-simulations \
-                   ros-humble-ament-clang-tidy
-    
+RUN apt-get update && apt-get install -y \
+        ros-humble-turtlebot4-description \
+        ros-humble-turtlebot4-msgs \
+        ros-humble-turtlebot4-navigation \
+        ros-humble-turtlebot4-node \
+        ros-humble-irobot-create-nodes \
+        ros-humble-turtlebot4-desktop
+
+# install gazebo
+RUN apt-get update
+RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
+RUN wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
+RUN apt-get update && apt-get install -y ignition-fortress
+
 # Initialize rosdep
 RUN rosdep init && rosdep update
 
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc 
-RUN echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc
+RUN echo 'export ROS_DOMAIN_ID=0 #TURTLEBOT4' >> ~/.bashrc
 RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
-RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
-RUN echo 'export TURTLEBOT3_MODEL=burger' >> ~/.bashrc
+
 
  #
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
