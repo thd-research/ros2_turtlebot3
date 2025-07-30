@@ -124,8 +124,10 @@ RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo 'export ROS_DOMAIN_ID=0 #TURTLEBOT4' >> ~/.bashrc
 RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 
+RUN echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
+RUN echo "export ROS_DOMAIN_ID=0" >> ~/.bashrc
 
- #
+#
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 #WORKDIR /ws_slam
