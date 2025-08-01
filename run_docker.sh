@@ -13,10 +13,10 @@ if [[ $1 = "--nvidia" ]] || [[ $1 = "-n" ]]
                 -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
                 -e XAUTHORITY \
                 -v /dev:/dev \
-               --mount source=ws_slam,target=/ws_slam \
+                -v ./turtlebot4_ws:/turtlebot4_ws \
                --net=host \
                --privileged \
-               --name slamn1 slamn1-img
+               --name turtlebot4 turtlebot4-img
 
 else
 
@@ -27,10 +27,10 @@ else
                 -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
                 -e XAUTHORITY \
                 -v /dev:/dev \
-                -v ./ws_slam:/ws_slam \
+                -v ./turtlebot4_ws:/turtlebot4_ws \
                --net=host \
                --privileged \
-               --name slamn1 slamn1-img
+               --name turtlebot4 turtlebot4-img
 fi
 
 

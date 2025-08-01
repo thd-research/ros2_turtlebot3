@@ -19,17 +19,17 @@ fi
 
 if [[ $1 = "--nvidia" ]] || [[ $1 = "-n" ]]
   then
-    docker build -t slamn1-img -f $ROOT_DIR/Dockerfile $ROOT_DIR \
+    docker build -t turtlebot4-img -f $ROOT_DIR/Dockerfile $ROOT_DIR \
                                   --network=host \
-                                  --build-arg from=nvidia/cuda:12.1.0-base-ubuntu22.04 \
+                                  --build-arg from=nvidia/cuda:12.9.1-base-ubuntu24.04 \
                                   --build-arg USERNAME=$(whoami)
 
 
 else
     echo "[!] If you use nvidia gpu, please rebuild with -n or --nvidia argument"
-    docker build -t slamn1-img -f $ROOT_DIR/Dockerfile $ROOT_DIR \
+    docker build -t turtlebot4-img -f $ROOT_DIR/Dockerfile $ROOT_DIR \
                                   --network=host \
-                                  --build-arg from=ubuntu:22.04 \
+                                  --build-arg from=ubuntu:24.04 \
                                   --build-arg USERNAME=$(whoami)
 fi
 
