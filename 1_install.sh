@@ -15,9 +15,9 @@ curl -L -o /tmp/ros2-apt-source.deb "https://github.com/ros-infrastructure/ros-a
 sudo dpkg -i /tmp/ros2-apt-source.deb
 
 sudo apt update
-sudo apt upgrade
+sudo apt upgrade -y
 
 # Install ROS2 packages
-sudo apt install ros-humble-desktop
-sudo apt install ros-humble-ros-base
-sudo apt install ros-dev-tools
+sudo apt install ros-humble-desktop -y
+sudo apt install ros-humble-ros-base -y
+sudo apt install ros-dev-tools -y
