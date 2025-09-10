@@ -11,12 +11,10 @@ git clone -b humble https://github.com/ROBOTIS-GIT/turtlebot3.git ~/turtlebot3_w
 git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git ~/turtlebot3_ws/src/ld08_driver
 git clone -b humble https://github.com/ROBOTIS-GIT/coin_d4_driver.git ~/turtlebot3_ws/src/coin_d4_driver
 
-cd ~/turtlebot3_ws/src/turtlebot3
-rm -r turtlebot3_cartographer turtlebot3_navigation2
-cd ~/turtlebot3_ws/
 
-echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
-source ~/.bashrc
-colcon build --symlink-install --parallel-workers 1
-echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc
-source ~/.bashrc
+sudo apt update
+sudo apt install -y dphys-swapfile
+
+sudo dphys-swapfile swaoff
+
+echo 'Modify CONF_SWASIZE=2048 in the /etc/dphys-swapfile'
