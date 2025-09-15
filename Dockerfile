@@ -140,10 +140,11 @@ RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 RUN echo 'export TURTLEBOT3_MODEL=burger' >> ~/.bashrc
 
+COPY play_with_scan.ipynb /ws_slam
  #
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#WORKDIR /ws_slam
+WORKDIR /ws_slam
 
 # Entry point: Open a bash shell with sourced ROS environment
 #ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source ~/ws_moveit/install/setup.bash && exec bash"]

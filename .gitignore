@@ -1,0 +1,7 @@
+venv/
+build/
+install/
+log/
+
+map.yaml
+map.pgm
