@@ -40,6 +40,18 @@ comand:  colcon build
 and then source
 comand: source ws_slam/installation/setup.bash
 
+## Wireless controllers
+
+pip install ds4drv
+
+#### On the first terminal: to receive controller signal and publish /joy topic
+ros2 run joy joy_node
+
+#### On the second terminal: 
+python3 wireless_controller.py
+
+#### On the third terminal
+run bringup on turtlebot
 
 ## Notes
 This setup is intended for simulation and SLAM testing in ROS 2 Humble.
