@@ -3,6 +3,8 @@ from rclpy.node import Node
 
 from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Twist
+from threading import Lock
+import numpy as np
 
 
 class ControllerSubcriber(Node):
@@ -13,26 +15,41 @@ class ControllerSubcriber(Node):
             Joy,
             'joy',
             self.listener_callback,
-            10
+            1
         )
 
         self.publisher = self.create_publisher(
             Twist,
             'cmd_vel',
-            0
+            10
         )
 
         self.linear_vel_scale = 0.22
-        self.angular_vel_scale = 2.8
-            
+        self.angular_vel_scale = 2.0
+
+        self.vel = Twist()
+        self.lock = Lock()
+
+        self.target_vel = [0, 0]
+
+        self.create_timer(0.1, self.publish_vel)
+
+    def publish_vel(self):
+        self.vel.linear.x = np.clip(self.target_vel[0], -self.linear_vel_scale, self.linear_vel_scale)
+        self.vel.angular.z = np.clip(self.target_vel[1], -self.angular_vel_scale, self.angular_vel_scale)
+
+        self.publisher.publish(self.vel)
+        self.get_logger().info(f"publish a msg: {self.vel.linear} {self.vel.angular}")
+
     def listener_callback(self, msg):
-        self.get_logger().info(f"\rI heard a msg: {msg}")
+        with self.lock:
+            self.target_vel[0] = round((msg.axes[5] - 1) / -2 * self.linear_vel_scale, 2)
 
-        vel = Twist()
-        vel.linear.x = msg.axes[1] * self.linear_vel_scale
-        vel.angular.z = msg.axes[0] * self.angular_vel_scale
+            if msg.buttons[4]:
+                self.target_vel[0] *= -1
 
-        self.publisher.publish(vel)
+            self.target_vel[1] = round(msg.axes[0] * self.angular_vel_scale, 1)
+
         
 
 if __name__ == '__main__':
