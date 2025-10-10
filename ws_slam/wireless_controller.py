@@ -40,5 +40,5 @@ if __name__ == '__main__':
 
     executor = rclpy.executors.SingleThreadedExecutor()
 
-    laser_subcriber = ControllerSubcriber(capacity=10)
+    laser_subcriber = ControllerSubcriber()
     rclpy.spin(laser_subcriber, executor=executor)
