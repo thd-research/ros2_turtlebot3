@@ -57,8 +57,8 @@ class ControllerSubcriber(Node):
 
         self.create_timer(0.1, self.publish_vel)
 
-        self.linear_pid = PIDController(Kp=1.0, Ki=0.1, Kd=0.05)
-        self.angular_pid = PIDController(Kp=1.0, Ki=0.1, Kd=0.05)
+        self.linear_pid = PIDController(Kp=8, Ki=0.0, Kd=0.0)
+        self.angular_pid = PIDController(Kp=2, Ki=0.0, Kd=0.0)
 
 
     def publish_vel(self):
@@ -84,8 +84,8 @@ class ControllerSubcriber(Node):
 
             self.target_vel[1] = round(msg.axes[0] * self.angular_vel_scale, 1)
 
-            self.linear_pid.setpoint(self.target_vel[0])
-            self.angular_pid.setpoint(self.target_vel[1])
+            self.linear_pid.update_setpoint(self.target_vel[0])
+            self.angular_pid.update_setpoint(self.target_vel[1])
 
 
 if __name__ == '__main__':
