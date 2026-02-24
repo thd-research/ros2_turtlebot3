@@ -1,0 +1,1 @@
+ros2 launch turtlebot4_navigation localization.launch.py map:="/ws_slam/maps/test-arena-2.yaml"

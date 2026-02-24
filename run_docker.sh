@@ -2,7 +2,7 @@
 
 xhost +local:docker || true
 
-ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/.." && pwd )"
+ROOT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )/." && pwd )"
 echo $ROOT_DIR
 if [[ $1 = "--nvidia" ]] || [[ $1 = "-n" ]]
   then
@@ -16,7 +16,7 @@ if [[ $1 = "--nvidia" ]] || [[ $1 = "-n" ]]
                --mount source=ws_slam,target=/ws_slam \
                --net=host \
                --privileged \
-               --name slamn1 slamn1-img
+               --name turtlebot4 turtlebot4-img
 
 else
 
@@ -27,10 +27,13 @@ else
                 -v "/tmp/.X11-unix:/tmp/.X11-unix:rw" \
                 -e XAUTHORITY \
                 -v /dev:/dev \
-                -v ./ws_slam:/ws_slam \
+                -v $ROOT_DIR/ws_slam:/ws_slam \
+                -v /var/run/dbus:/var/run/dbus \
+               -v /run/bluetooth:/run/bluetooth \
+               --device /dev/bus/usb \
                --net=host \
                --privileged \
-               --name slamn1 slamn1-img
+               --name turtlebot4 turtlebot4-img
 fi
 
 
