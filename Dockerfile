@@ -36,7 +36,7 @@ RUN apt-get update && apt-get install -y \
     unzip \
     gnupg2
 
-# Install ROS 2 Humble and setup repositories correctly
+# Install ROS 2 humble and setup repositories correctly
 RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add - \
     && echo "deb [arch=amd64] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/ros2-latest.list \
     && apt-get update \
@@ -52,26 +52,14 @@ RUN curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | a
     libbullet-dev \
     python3-vcstool \
     python3-colcon-mixin \
-    python3-colcon-common-extensions
+    python3-colcon-common-extensions \
+    python3-full
 
 # Configure colcon mixin
-RUN colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml && colcon mixin update default
+# RUN colcon mixin add default https://raw.githubusercontent.com/colcon/colcon-mixin-repository/master/index.yaml && \
+#     colcon mixin update default
 
 # Installing Python3 components 
-RUN python3 -m pip install -U \
-    argcomplete \
-    flake8-blind-except \
-    flake8-builtins \
-    flake8-class-newline \
-    flake8-comprehensions \
-    flake8-deprecated \
-    flake8-docstrings \
-    flake8-import-order \
-    flake8-quotes \
-    pytest-repeat \
-    pytest-rerunfailures \
-    pytest
-    
 RUN apt-get install -y \
 	g++ \
 	clang \
@@ -86,6 +74,20 @@ RUN apt-get install -y \
 	python3-empy \
 	python3-pytest \
 	python3-numpy
+
+    # argcomplete \
+    # flake8-blind-except \
+    # flake8-builtins \
+    # flake8-class-newline \
+    # flake8-comprehensions \
+    # flake8-deprecated \
+    # flake8-docstrings \
+    # flake8-import-order \
+    # flake8-quotes \
+    # pytest-repeat \
+# RUN pip install -U \
+#     pytest-rerunfailures
+    # pytest
 
 RUN apt update && apt install -y \
 	  ros-humble-rclcpp \
@@ -104,10 +106,6 @@ RUN apt update && apt install -y \
 #     ros-humble-nav2-bringup
 
 RUN apt-get update && apt-get install -y \
-        ros-humble-turtlebot4-description \
-        ros-humble-turtlebot4-msgs \
-        ros-humble-turtlebot4-navigation \
-        ros-humble-turtlebot4-node \
         ros-humble-irobot-create-nodes \
         ros-humble-turtlebot4-desktop
 
@@ -115,22 +113,35 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update
 RUN sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable `lsb_release -cs` main" > /etc/apt/sources.list.d/gazebo-stable.list'
 RUN wget http://packages.osrfoundation.org/gazebo.key -O - | apt-key add -
-RUN apt-get update && apt-get install -y ignition-fortress
+RUN apt-get update && apt-get install -y ros-humble-ros-gz
 
 # Initialize rosdep
 RUN rosdep init && rosdep update
 
+RUN apt update && apt install -y ros-humble-rmw-cyclonedds-cpp
+RUN apt install -y ros-humble-twist-stamper \
+                   ros-humble-ros-ign-gazebo \
+                   ros-humble-nav2-bringup
+
+RUN apt-get update && apt-get install -y ignition-fortress
+
 RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc 
 RUN echo 'export ROS_DOMAIN_ID=0 #TURTLEBOT4' >> ~/.bashrc
-RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
+# RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 
-RUN echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
-RUN echo "export ROS_DOMAIN_ID=0" >> ~/.bashrc
+# RUN echo "export RMW_IMPLEMENTATION=rmw_fastrtps_cpp" >> ~/.bashrc
+RUN echo "source /ws_slam/setup_env.sh" >> ~/.bashrc
+RUN pip install notebook
 
-#
+RUN apt install -y ffmpeg python3-pyaudio 
+RUN apt update && apt install -y ffmpeg portaudio19-dev
+
+RUN pip install --upgrade pip setuptools wheel
+RUN pip install --upgrade --no-deps --force-reinstall git+https://github.com/openai/whisper.git
+
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#WORKDIR /ws_slam
+WORKDIR /ws_slam
 
 # Entry point: Open a bash shell with sourced ROS environment
 #ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source ~/ws_moveit/install/setup.bash && exec bash"]
