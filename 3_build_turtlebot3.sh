@@ -3,6 +3,7 @@ sudo apt install -y ros-humble-hls-lfcd-lds-driver
 sudo apt install -y ros-humble-turtlebot3-msgs
 sudo apt install -y ros-humble-dynamixel-sdk
 sudo apt install -y ros-humble-xacro
+sudo apt install -y ros-humble-rmw-cyclonedds-cpp
 sudo apt install -y libudev-dev
 
 mkdir -p ~/turtlebot3_ws/src && cd ~/turtlebot3_ws/src
