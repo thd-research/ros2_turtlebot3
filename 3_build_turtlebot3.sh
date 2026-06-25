@@ -13,9 +13,9 @@ git clone -b humble https://github.com/ROBOTIS-GIT/ld08_driver.git ~/turtlebot3_
 git clone -b humble https://github.com/ROBOTIS-GIT/coin_d4_driver.git ~/turtlebot3_ws/src/coin_d4_driver
 
 
-sudo apt update
-sudo apt install -y dphys-swapfile
+# sudo apt update
+# sudo apt install -y dphys-swapfile
 
-sudo dphys-swapfile swaoff
+# sudo dphys-swapfile swaoff
 
-echo 'Modify CONF_SWASIZE=2048 in the /etc/dphys-swapfile'
+# echo 'Modify CONF_SWASIZE=2048 in the /etc/dphys-swapfile'
