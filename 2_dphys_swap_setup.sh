@@ -7,4 +7,3 @@ sudo dphys-swapfile swapon
 sudo systemctl restart dphys-swapfile.service
 sudo systemctl status dphys-swapfile.service
 free -h
-EOF
