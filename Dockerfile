@@ -131,6 +131,8 @@ RUN apt-get update && apt-get install -y ros-humble-ur-client-library \
                    ros-humble-turtlebot3-simulations \
                    ros-humble-ament-clang-tidy
     
+RUN apt-get update && apt-get install -y ros-humble-rmw-cyclonedds-cpp
+
 # Initialize rosdep
 RUN rosdep init && rosdep update
 
@@ -138,12 +140,11 @@ RUN echo "source /opt/ros/humble/setup.bash" >> ~/.bashrc
 RUN echo 'export ROS_DOMAIN_ID=30 #TURTLEBOT3' >> ~/.bashrc
 RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
-RUN echo 'export TURTLEBOT3_MODEL=burger' >> ~/.bashrc
+RUN echo 'export TURTLEBOT3_MODEL=waffle_pi' >> ~/.bashrc
 
- #
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
-#WORKDIR /ws_slam
+WORKDIR /ws_slam
 
 # Entry point: Open a bash shell with sourced ROS environment
 #ENTRYPOINT ["/bin/bash", "-c", "source /opt/ros/humble/setup.bash && source ~/ws_moveit/install/setup.bash && exec bash"]
