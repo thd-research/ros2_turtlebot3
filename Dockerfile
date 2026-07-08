@@ -142,6 +142,10 @@ RUN echo 'source /usr/share/gazebo/setup.sh' >> ~/.bashrc
 RUN echo 'source /opt/ros/humble/setup.bash' >> ~/.bashrc
 RUN echo 'export TURTLEBOT3_MODEL=waffle_pi' >> ~/.bashrc
 
+RUN pip install jupyter pandas
+RUN pip install matplotlib --force-reinstall
+
+
 #RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /ws_slam

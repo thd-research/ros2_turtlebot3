@@ -16,6 +16,7 @@ bash install_docker.sh -n       # (Re)install Docker with Nvidia support
 bash build_docker.sh -n         # Build the Docker image
 bash run_docker.sh -n           # Run the Docker container
 bash into_docker.sh             # Access the running Docker container##
+```
 
 ## Based On
 Official TurtleBot3 SLAM documentation:
@@ -24,22 +25,27 @@ https://emanual.robotis.com/docs/en/platform/turtlebot3/slam/
 SLAM Toolbox repository (Humble branch):
 https://github.com/SteveMacenski/slam_toolbox/tree/humble
 
-## Included Packages (from source)
-Inside the container workspace (./ws_slam/src), the following packages are cloned from their official sources:
+## RUN
 
-turtlebot3_simulations
+Run Jupyter server by:
+```
+jupyter notebook --allow-root
+```
 
-DynamixelSDK
+Then choose the proper notebook based on the workflow
 
-turtlebot3_msgs
+## Notebook Workflow
 
-turtlebot3
+1. Generate the actions
+   - `ws_slam/notebooks/velocity-dynamics-estimation.ipynb`: simulate the action and save smoothed actions into `vel_cmd_filt.csv`.
 
-after building and running the image, it is necessary to build the work space (ws_slam)
-comand:  colcon build
-and then source
-comand: source ws_slam/installation/setup.bash
+2. To run robot with estimated actions
+   - `ws_slam/notebooks/run_robot.ipynb`: read `vel_cmd_filt.csv` and publish actions to the real robot.
+   - Before executing the publishing cell, run `ws_slam/scripts/record_rosbag_experiments.sh` to record the experiment properly to rosbag.
+   - Note: this will overwrite the existing `<ROS-BAG>` folder.
 
+3. Evaluate experiment
+   - `ws_slam/notebooks/velocity-dynamics-estimation-realrobot.ipynb`: load the rosbag and evaluate models.
 
 ## Notes
 This setup is intended for simulation and SLAM testing in ROS 2 Humble.
